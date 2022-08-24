@@ -22,21 +22,26 @@ public class TodoAppApplication {
 		SpringApplication.run(TodoAppApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String init(){
-
-		return "hello";
-	}
-
-//	@GetMapping
-//	public ResponseEntity<Map<String, String>> hello(){
-//		Map<String, String> data = new HashMap<>();
-//		data.put("text", "hello team 30");
-//		data.put("id", "52");
+//	@GetMapping("/hello")
+//	public String init(){
 //
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("hello", data);
-//
-//		return new HashMap<>(map, )
+//		return "hello";
 //	}
+
+	@GetMapping("/hello")
+	public ResponseEntity<Map<String, Object>> hello(){
+		Map<String, String> data = new HashMap<>();
+		data.put("text", "hello team 30");
+		data.put("id", "52");
+
+
+		ArrayList<Map<String, String>> array = new ArrayList<>();
+		array.add(data);
+
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("hello", array);
+
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
 }
